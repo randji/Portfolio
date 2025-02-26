@@ -1,9 +1,14 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import emailjs from "@emailjs/browser";
 import { emailConfig } from "../config/email";
 
 export default function Contact() {
+  // Initialisation d'EmailJS
+  useEffect(() => {
+    emailjs.init(emailConfig.publicKey);
+  }, []);
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
