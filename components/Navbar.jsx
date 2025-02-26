@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Link from 'next/link';
-import { Menu, X } from 'lucide-react';
+import { Menu, X,Github } from 'lucide-react';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -24,6 +24,15 @@ export default function Navbar() {
             <Link href="/#contact" className="hover:text-primary transition-colors">
               Contact
             </Link>
+            <a
+                  href="https://github.com/randji"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 hover:text-primary transition-colors"
+                >
+                  <Github size={18} />
+                  GitHub
+                </a>
           </div>
 
           {/* Mobile Menu Button */}

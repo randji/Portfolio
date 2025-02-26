@@ -1,29 +1,85 @@
-import { motion } from 'framer-motion';
-import Image from 'next/image';
+import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function Projects() {
   const projects = [
     {
       title: "Cours Synapse",
-      description: "Une plateforme e-commerce complète avec panier et paiement",
-      image: "/project1.jpg",
-      tags: ["React", "Node.js", "MongoDB"],
-      link: "#"
+      description:
+        "Application web de soutien scolaire pour l'entreprise cours Synapse",
+      image: "/projects/coursSynapse.png",
+      tags: ["React", "nextJs", "firebase", "Tailwind CSS"],
+      link: "https://www.courssynapse.fr/",
+      preview: {
+        type: "iframe",
+        url: "https://www.courssynapse.fr/",
+      },
+      iframe: (
+        <div className="iframe-wrapper">
+          <iframe
+            src="https://www.courssynapse.fr/"
+            className="w-full h-[300px] rounded-lg"
+            title="Cours Synapse Preview"
+            loading="lazy"
+            style={{
+              border: "none",
+              borderRadius: "8px",
+              boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
+            }}
+          />
+        </div>
+      ),
     },
     {
-      title: "Application de Gestion",
-      description: "Système de gestion des tâches et des projets",
-      image: "/project2.jpg",
-      tags: ["Next.js", "TypeScript", "Prisma"],
-      link: "#"
+      title: "GNB-PROTECT",
+      description: "Site vitrine pour l'entreprise GNB-PROTECT",
+      image: "/skill/Js.jpeg",
+      tags: ["Next.js", "TypeScript", "Tailwind CSS"],
+      link: "https://gnb-five.vercel.app/",
+      preview: {
+        type: "iframe",
+        url: "https://gnb-five.vercel.app/",
+      },
+      iframe: (
+        <div className="iframe-wrapper">
+          <iframe
+            src="https://gnb-five.vercel.app/"
+            className="w-full h-[300px] rounded-lg"
+            title="GNB-PROTECT Preview"
+            loading="lazy"
+            style={{border: "none",
+              borderRadius: "8px",
+              boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
+            }}
+          />
+        </div>
+      ),
     },
     {
-      title: "Portfolio Créatif",
-      description: "Site portfolio avec animations et design moderne",
-      image: "/project3.jpg",
-      tags: ["React", "Framer Motion", "Tailwind"],
-      link: "#"
-    }
+      title: "loizir",
+      description: "Plateforme de réservation d’activités (en production)",
+      image: "/projects/loizir.jpeg",
+      tags: ["React", "symfony 7", "Tailwind", "docker", "MYSQL", "Github Actions, API REST"],
+      link: "https://github.com/randji/loizir",
+      preview: {
+        type: "IMAGE",
+        url: "/projects/loizir.jpeg",
+      },
+      iframe: (
+        <div>
+          <img
+            src="/projects/loizir.jpeg"
+            className="object-cover rounded-lg"
+            title="GNB-PROTECT Preview"
+            
+            style={{border: "none",
+              borderRadius: "8px",
+              boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
+            }}
+          />
+        </div>
+      ),
+    },
   ];
 
   return (
@@ -40,19 +96,21 @@ export default function Projects() {
               transition={{ duration: 0.8, delay: index * 0.2 }}
               className="bg-white rounded-lg overflow-hidden shadow-lg"
             >
-              <div className="relative h-48">
+              {/* <div className="relative h-48">
                 <Image
                   src={project.image}
                   alt={project.title}
                   fill
-                  className="object-cover"
+                  className="object-cover shadow-lg"
                 />
-              </div>
+              </div> */}
               <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
+                <h3 className="text-xl font-semibold mb-1">{project.title}</h3>
+                {project.iframe && <div className="mb-4">{project.iframe}</div>}
+
                 <p className="text-gray-600 mb-4">{project.description}</p>
                 <div className="flex flex-wrap gap-2 mb-4">
-                  {project.tags.map(tag => (
+                  {project.tags.map((tag) => (
                     <span
                       key={tag}
                       className="px-3 py-1 bg-gray-100 rounded-full text-sm"
@@ -74,4 +132,4 @@ export default function Projects() {
       </div>
     </section>
   );
-} 
+}
